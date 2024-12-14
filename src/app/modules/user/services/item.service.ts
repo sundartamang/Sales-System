@@ -9,7 +9,7 @@ import { Role } from 'src/app/model';
 })
 export class UserService {
 
-  private key: string = 'items';
+  private key: string = 'users';
 
   constructor(private localStorageService: LocalStorageService) { }
 

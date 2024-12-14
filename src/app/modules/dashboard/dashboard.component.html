@@ -1,1 +1,56 @@
-<p>dashboard works!</p>
+<div class="bg-white">
+    <div class="padding-10 margin-10 margin-b-10 bordered">
+        <span>
+            <b>Total sold </b> : {{totalSoldItems }}
+        </span>
+    </div>
+    <div class="margin-t-10 margin-10 padding-10 bordered">
+        <h4>Today's sold</h4>
+        <div class="divider"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>S.N.</td>
+                    <td>Name</td>
+                    <td>Sell</td>
+                    <td>Sold</td>
+                    <td>Sold Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of soldToday$ | async; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{item.sell ? 'Sell': '-'}}</td>
+                    <td>{{item.sold}}</td>
+                    <td>{{item.soldDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="margin-t-10 margin-10 padding-10 bordered">
+        <h4>Most popular item</h4>
+        <div class="divider"></div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>S.N.</td>
+                    <td>Name</td>
+                    <td>Sell</td>
+                    <td>Sold</td>
+                    <td>Sold Date</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of mostPopularItems$ | async; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ item.name }}</td>
+                    <td>{{item.sell ? 'Sell': '-'}}</td>
+                    <td>{{item.sold}}</td>
+                    <td>{{item.soldDate}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+
+<div class="bg-white padding-10 login-wrapper">
+    <form [formGroup]="loginForm">
+        <div class="margin-b-10">
+            <input type="text" placeholder="Enter username" formControlName="username" />
+        </div>
+        <div class="margin-b-10">
+            <input type="password" placeholder="Enter password" formControlName="password" />
+        </div>
+        <div class="flex row flex-end">
+            <button type="button" class="btn margin-l-10" [disabled]="loginForm.invalid"
+            (click)="login()">Save</button>
+        </div>
+    </form>
+</div>

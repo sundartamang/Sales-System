@@ -53,14 +53,17 @@
                     <div class="margin-b-10">
                         <input type="date" placeholder="Enter item name" formControlName="soldDate" />
                     </div>
-                    <div class="margin-b-10">
-                        <label class="flex row flex-start">
+                    <div class="margin-b-10 flex row">
+                        <label class="flex row flex-start margin-l-10">
                             Sell ? <input type="checkbox" formControlName="sell" style="width: 30px;"/> 
+                        </label>
+                        <label class="flex row flex-start margin-r-10">
+                            Re stock ? <input type="checkbox" formControlName="reStock" style="width: 30px;"/> 
                         </label>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer ">
                 <button type="button" class="btn danger" (click)="modal.close()">Close</button>
                 <button type="button" class="btn margin-l-10" [disabled]="itemForm.invalid"
                     (click)="submit()">Save</button>

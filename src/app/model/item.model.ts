@@ -4,4 +4,5 @@ export interface Item{
     sell?: boolean;
     sold: number;
     soldDate: string;
+    reStock?: boolean
 }

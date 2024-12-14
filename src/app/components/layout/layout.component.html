@@ -4,21 +4,24 @@
             <a class="no-text-decoration padding-l-10" routerLink="/" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
         </li>
-        <li>
+        <li *ngIf="hasRole('admin') || hasRole('salesPerson')">
             <a class="no-text-decoration padding-l-10" routerLink="/sale" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Sale</a>
         </li>
-        <li>
+        <li *ngIf="hasRole('admin') || hasRole('supervisor')">
             <a class="no-text-decoration padding-l-10" routerLink="/item" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Item</a>
         </li>
-        <li>
+        <li *ngIf="hasRole('admin')">
             <a class="no-text-decoration padding-l-10" routerLink="/role" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">Role</a>
         </li>
-        <li>
+        <li *ngIf="hasRole('admin')">
             <a class="no-text-decoration padding-l-10" routerLink="/user" routerLinkActive="active"
                 [routerLinkActiveOptions]="{ exact: true }">User</a>
+        </li>
+        <li >
+            <a class="no-text-decoration padding-l-10" (click)="logout()">Logout</a>
         </li>
     </ul>
 </nav>

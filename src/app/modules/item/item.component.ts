@@ -56,6 +56,7 @@ export class ItemComponent implements OnInit {
     this.itemForm.patchValue({ sell: item.sell });
     this.itemForm.patchValue({ sold: item.sold });
     this.itemForm.patchValue({ soldDate: item.soldDate });
+    this.itemForm.patchValue({ reStock: item.reStock });
     this.modalService.open(this.createItemModal);
   }
 
@@ -68,6 +69,7 @@ export class ItemComponent implements OnInit {
     if (this.selectedItem) {
       this.selectedItem.name = this.itemForm.get('name')?.value;
       this.selectedItem.sell = this.itemForm.get('sell')?.value;
+      this.selectedItem.reStock = this.itemForm.get('reStock')?.value;
       this.selectedItem.sold = this.itemForm.get('sold')?.value;
       this.selectedItem.soldDate = this.itemForm.get('soldDate')?.value;
       this.itemService.updateItem(this.selectedItem);
@@ -83,6 +85,7 @@ export class ItemComponent implements OnInit {
     this.itemForm = this.fb.group({
       name: ['', Validators.required],
       sell: [false],
+      reStock: [false],
       sold: ['', Validators.required],
       soldDate: ['']
     });
