@@ -1,0 +1,70 @@
+<div>
+    <button class="btn btn-primary btn-sm" (click)="modalService.open(createItemModal)">
+        <i class="bi bi-plus-circle"></i> Add
+    </button>
+    <div class="divider"></div>
+    <div class="container padding-t-10 margin-t-10">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S.N.</th>
+                    <th>Name</th>
+                    <th>Sell</th>
+                    <th>Sold</th>
+                    <th>Sold Date</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of items$ | async; let i = index">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ item.name }}</td>
+                    <td>{{item.sell ? 'Sell': '-'}}</td>
+                    <td>{{item.sold}}</td>
+                    <td>{{item.soldDate}}</td>
+                    <td>
+                        <a (click)="deleteItem(item.id)" aria-label="Delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <a (click)="editItem(item)" class="margin-l-10" aria-label="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #createItemModal let-modal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4> {{editMode ? 'Edit': 'Create'}} Item</h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="itemForm">
+                    <div class="margin-b-10">
+                        <input type="text" placeholder="Enter item name" formControlName="name" />
+                    </div>
+                    <div class="margin-b-10">
+                        <input type="number" placeholder="Enter total sold item number" formControlName="sold" />
+                    </div>
+                    <div class="margin-b-10">
+                        <input type="date" placeholder="Enter item name" formControlName="soldDate" />
+                    </div>
+                    <div class="margin-b-10">
+                        <label class="flex row flex-start">
+                            Sell ? <input type="checkbox" formControlName="sell" style="width: 30px;"/> 
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn danger" (click)="modal.close()">Close</button>
+                <button type="button" class="btn margin-l-10" [disabled]="itemForm.invalid"
+                    (click)="submit()">Save</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

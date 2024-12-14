@@ -1,0 +1,51 @@
+<div>
+    <button class="btn btn-primary btn-sm" (click)="modalService.open(createRoleModal)">
+        <i class="bi bi-plus-circle"></i> Add
+    </button>
+    <div class="divider"></div>
+    <div class="container padding-t-10 margin-t-10">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S.N.</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let role of roles$ | async; let i = index">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ role.roleName }}</td>
+                    <td>
+                        <a (click)="deleteRole(role.id)" aria-label="Delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <a (click)="editRole(role)" class="margin-l-10" aria-label="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #createRoleModal let-modal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>{{editMode ?  'Edit': 'Create'}} User Role</h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="roleForm">
+                    <input id="role" placeholder="Enter role name" formControlName="roleName" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn danger" (click)="modal.close()">Close</button>
+                <button type="button" class="btn margin-l-10" [disabled]="roleForm.invalid"
+                    (click)="submit()">Save</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

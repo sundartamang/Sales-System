@@ -1,0 +1,30 @@
+<nav class="bg-white border-bottom">
+    <ul class="flex row center-v center-h height-100">
+        <li>
+            <a class="no-text-decoration padding-l-10" routerLink="/" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Dashboard</a>
+        </li>
+        <li>
+            <a class="no-text-decoration padding-l-10" routerLink="/sale" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Sale</a>
+        </li>
+        <li>
+            <a class="no-text-decoration padding-l-10" routerLink="/item" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Item</a>
+        </li>
+        <li>
+            <a class="no-text-decoration padding-l-10" routerLink="/role" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">Role</a>
+        </li>
+        <li>
+            <a class="no-text-decoration padding-l-10" routerLink="/user" routerLinkActive="active"
+                [routerLinkActiveOptions]="{ exact: true }">User</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="margin-10 padding-10">
+    <div class=" main-wrapper padding-10 bg-white">
+        <router-outlet></router-outlet>
+    </div>
+</div>

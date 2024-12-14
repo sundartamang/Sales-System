@@ -1,0 +1,64 @@
+<div>
+    <button class="btn btn-primary btn-sm" (click)="modalService.open(createUserModal)">
+        <i class="bi bi-plus-circle"></i> Add
+    </button>
+    <div class="divider"></div>
+    <div class="container padding-t-10 margin-t-10">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>S.N.</th>
+                    <th>User Name</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of user$ | async; let i = index">
+                    <th>{{ i + 1 }}</th>
+                    <td>{{ user.userName }}</td>
+                    <td>{{user.role}}</td>
+                    <td>
+                        <a (click)="deleteUser(user.id)" aria-label="Delete">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                        <a (click)="editUser(user)" class="margin-l-10" aria-label="Edit">
+                            <i class="bi bi-pencil"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-template #createUserModal let-modal>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4> {{editMode ?  'Edit': 'Create'}} User</h4>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="userForm">
+                    <div class="margin-b-10">
+                        <input type="text" placeholder="Enter user name" formControlName="userName" />
+                    </div>
+                    <div class="margin-b-10" *ngIf="!editMode">
+                        <input type="password" placeholder="Enter password" formControlName="password" />
+                    </div>
+                    <div>
+                        <select formControlName="role" >
+                            <option  disabled selected>Select Role</option>
+                            <option [value]="role.roleName" *ngFor="let role of roles$ | async; let i = index">{{role.roleName}}</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn danger" (click)="modal.close()">Close</button>
+                <button type="button" class="btn margin-l-10" [disabled]="userForm.invalid"
+                    (click)="submit()">Save</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

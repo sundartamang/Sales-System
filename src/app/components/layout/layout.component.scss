@@ -1,0 +1,22 @@
+nav {
+    height: 73px;
+
+    ul {
+        li {
+            list-style: none;
+
+            a {
+                &.active {
+                    color: red;
+                }
+            }
+        }
+    }
+}
+
+.main-wrapper {
+    width: 900px;
+    height: auto;
+    min-height: 50vh;
+    margin: auto;
+}
