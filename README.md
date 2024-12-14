@@ -1,7 +1,8 @@
-# SalesSystem
+# Sales System
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.13.
+- **Node version**: 14 or later
+- **Angular version**: 14.2.13
 
-## Admin credential
-username : admin
-password : amin
+## Admin Credentials
+- **Username**: admin
+- **Password**: admin
