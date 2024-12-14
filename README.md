@@ -6,3 +6,8 @@
 ## Admin Credentials
 - **Username**: admin
 - **Password**: admin
+
+## Steps
+1. Log in with the default admin credentials.
+2. First, create roles.
+3. Then, create users.
